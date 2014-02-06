@@ -14,7 +14,7 @@ module.exports = (grunt) ->
   cssDir     = "#{appDir}/styles"
   sassDir    = "#{appDir}/sass"
   fontsDir   = "#{appDir}/fonts"
-  bowerDir   = "#{jsDir}/vendors"
+  bowerDir   = "#{appDir}/bower_components"
  
   grunt.initConfig
     clean:
@@ -61,10 +61,11 @@ module.exports = (grunt) ->
       server:
         options:
           cssDir: cssDir
-          imagesDir: imgDir
+          imagesDir: imgDir,
+          specify: ["#{sassDir}/main.scss"],
           javascriptsDir: jsDir
           fontsDir: fontsDir
-          importPath: bowerDir
+          importPath: bowerDir,
           relativeAssets: true
           debugInfo: false,
           noLineComments: true
