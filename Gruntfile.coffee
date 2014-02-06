@@ -1,7 +1,5 @@
 module.exports = (grunt) ->
  
-  lrSnippet = require("grunt-contrib-livereload/lib/utils").livereloadSnippet
- 
   mountFolder = (connect, dir) ->
     connect.static(require("path").resolve(dir))
  
@@ -23,6 +21,9 @@ module.exports = (grunt) ->
       server: "#{cssDir}{,*/}*.css"
  
     watch:
+      gruntfile:
+        files: ["Gruntfile.coffee"]
+
       compass:
         files: ["#{sassDir}{,*/}*.{scss,sass}"]
         tasks: ["compass"]
@@ -45,7 +46,7 @@ module.exports = (grunt) ->
           hostname: "localhost"
           middleware: (connect) ->
             [
-              lrSnippet
+              require("grunt-contrib-livereload/lib/utils").livereloadSnippet
               mountFolder(connect, appDir)
             ]
  
