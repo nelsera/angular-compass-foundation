@@ -61,7 +61,8 @@ module.exports = function (grunt) {
           importPath: bowerDir,
           relativeAssets: true,
           debugInfo: false,
-          noLineComments: true
+          noLineComments: true,
+          require: ['sass-css-importer']
         }
       }
     }
